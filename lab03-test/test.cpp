@@ -1,5 +1,6 @@
 #include "histogramm.h"
 #include <cassert>
+#include <string.h>
 
 void test_positive()
 {
@@ -44,6 +45,23 @@ void test4()
     assert(min == 0);
     assert(max == 0);
 }
+void test5()
+{
+    vector <size_t> bins={20,5,25,30,24};
+    assert(color_bins(bins, 15, bin[0])=="111");
+    assert(color_bins(bins, 15, bin[1])=="555");
+    assert(color_bins(bins, 15, bin[2])=="444");
+    assert(color_bins(bins, 15, bin[3])=="999");
+    assert(color_bins(bins, 15, bin[4])=="666");
+}
+
+void test6()
+{
+    vector <size_t> bins={5,10,15};
+    assert(color_bins(0, 5, bin[0])=="999");
+    assert(color_bins(0, 5, bin[1])=="111");
+    assert(color_bins(0, 5, bin[2])=="555");
+}
 
 int main()
 {
@@ -52,4 +70,6 @@ int main()
     test2();
     test3();
     test4();
+    test5();
+    test6();
 }

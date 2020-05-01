@@ -4,6 +4,7 @@
 #include <string>
 #include "histogramm.h"
 #include "svg.h"
+
 using namespace std;
 const size_t SCREEN_WIDTH = 80;
 const size_t MAX_ASTERISK = SCREEN_WIDTH - 3 - 1;
@@ -64,6 +65,7 @@ void show_histogram_text(vector <size_t>& bins)
             cout<<endl;
         }
     }
+
     else
     {
         for (size_t bin:bins)
@@ -86,11 +88,6 @@ void show_histogram_text(vector <size_t>& bins)
     }
 }
 
-
-
-
-
-
 int main()
 {
     size_t number_count;
@@ -102,10 +99,11 @@ int main()
     cerr << "Enter bin count:";
     cin >> bin_count;
     vector <size_t> bins(bin_count, 0);
+    double left;
+    double baseline;
 
     double min, max;
     find_minmax(numbers, min, max);
-
     make_histogram ( numbers, max, min, bin_count, bins );
     show_histogram_svg(bins);
 
