@@ -9,16 +9,15 @@ using namespace std;
 const size_t SCREEN_WIDTH = 80;
 const size_t MAX_ASTERISK = SCREEN_WIDTH - 3 - 1;
 
-
-vector<double> input_numbers(size_t count)
-{
-    vector<double> result(count);
+vector<double>
+input_numbers(istream& in, size_t count) {
+   vector<double> result(count);
     for (size_t i = 0; i < count; i++)
     {
         cin >> result[i];
     }
-    return result;
 }
+
 
 void make_histogram(const vector<double>& numbers, double max, double min, size_t bin_count, vector <size_t>& bins )
 {
@@ -93,7 +92,7 @@ int main()
     size_t number_count;
     cerr << "Enter number count:";
     cin >> number_count;
-    const auto numbers = input_numbers(number_count);
+    const auto numbers = input_numbers(cin, number_count);
 
     size_t bin_count;
     cerr << "Enter bin count:";
