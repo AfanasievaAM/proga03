@@ -4,6 +4,7 @@
 #include <string>
 #include "histogramm.h"
 #include "svg.h"
+#include <curl/curl.h>
 
 using namespace std;
 const size_t SCREEN_WIDTH = 80;
@@ -129,7 +130,7 @@ void show_histogram_text(vector <size_t>& bins)
 
 int main()
 {
-
+    curl_global_init(CURL_GLOBAL_ALL);
     const auto input = read_input(cin, true);
     const auto bins = make_histogram(input);
     show_histogram_svg(bins);
