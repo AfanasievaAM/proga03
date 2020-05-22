@@ -9,15 +9,11 @@ using namespace std;
 const size_t SCREEN_WIDTH = 80;
 const size_t MAX_ASTERISK = SCREEN_WIDTH - 3 - 1;
 
-struct Input {
-    vector<double> numbers;
-    size_t bin_count;
-};
-
 
 vector<double>
-input_numbers(istream& in, size_t count) {
-   vector<double> result(count);
+input_numbers(istream& in, size_t count)
+{
+    vector<double> result(count);
     for (size_t i = 0; i < count; i++)
     {
         in >> result[i];
@@ -25,7 +21,8 @@ input_numbers(istream& in, size_t count) {
 }
 
 Input
-read_input(istream& in) {
+read_input(istream& in)
+{
     Input data;
 
     cerr << "Enter number count: ";
@@ -41,15 +38,17 @@ read_input(istream& in) {
     return data;
 }
 
-vector<size_t> make_histogram(const vector<double>& numbers, const size_t count )
+vector<size_t> make_histogram(const Input& data)
 {
-    vector<size_t> result(count);
+    vector<size_t> result(data.bin_count);
     double min;
     double max;
-   find_minmax(numbers, min, max);
-    for (double number : numbers) {
-        size_t bin = (size_t)((number - min) / (max - min) * count);
-        if (bin == count) {
+    find_minmax(data.numbers, min, max);
+    for (double number : data.numbers)
+    {
+        size_t bin = (size_t)((number - min) / (max - min) * data.bin_count);
+        if (bin == data.bin_count)
+        {
             bin--;
         }
         result[bin]++;
@@ -114,18 +113,9 @@ void show_histogram_text(vector <size_t>& bins)
 
 int main()
 {
-    size_t number_count;
-    cerr << "Enter number count:";
-    cin >> number_count;
     Input data = read_input(cin);
-    const auto numbers = input_numbers(cin, number_count);
-
-    size_t bin_count;
-    cerr << "Enter bin count:";
-    cin >> bin_count;
-
-    const auto bins = make_histogram(numbers, bin_count);
+    const auto input = read_input(cin);
+    const auto bins = make_histogram(input);
     show_histogram_svg(bins);
-
     return 0;
 }
