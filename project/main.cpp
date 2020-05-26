@@ -20,7 +20,7 @@ vector<double> input_numbers(size_t count)
     return result;
 }
 
-void make_histogram(const vector<double>& numbers, double max, double min, size_t bin_count, vector <size_t>& bins )
+void make_histogram(const vector<double>& numbers, double& max, double& min, size_t bin_count, vector <size_t>& bins )
 {
 
     for(double x: numbers)

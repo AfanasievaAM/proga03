@@ -1,4 +1,5 @@
-#include "histogramm.h"
+#include "../project/histogramm.h"
+#include "../project/svg.h"
 #include <cassert>
 #include <string.h>
 
@@ -48,19 +49,19 @@ void test4()
 void test5()
 {
     vector <size_t> bins={20,5,25,30,24};
-    assert(color_bins(bins, 15, bin[0])=="111");
-    assert(color_bins(bins, 15, bin[1])=="555");
-    assert(color_bins(bins, 15, bin[2])=="444");
-    assert(color_bins(bins, 15, bin[3])=="999");
-    assert(color_bins(bins, 15, bin[4])=="666");
+    assert(color_bins(bins, 30, bins[0])=="444");
+    assert(color_bins(bins, 30, bins[1])=="999");
+    assert(color_bins(bins, 30, bins[2])=="333");
+    assert(color_bins(bins, 30, bins[3])=="111");
+    assert(color_bins(bins, 30, bins[4])=="333");
 }
 
 void test6()
 {
     vector <size_t> bins={5,10,15};
-    assert(color_bins(0, 5, bin[0])=="999");
-    assert(color_bins(0, 5, bin[1])=="111");
-    assert(color_bins(0, 5, bin[2])=="555");
+    assert(color_bins({}, 15, bins[0])=="000");
+    assert(color_bins({}, 15, bins[1])=="000");
+    assert(color_bins({}, 15, bins[2])=="000");
 }
 
 int main()

@@ -60,8 +60,10 @@ size_t find_min(const vector<size_t>& bins)/*определ€ем минимальную длину столбц
 
 string color_bins(const vector<size_t>& bins, size_t max_count, size_t bin) /*функци€, мен€юща€ насыщенность заливки*/
 {
-    ostringstream tipe; /*используем дл€ записи в стоку*/
+    ostringstream tipe; /*используем дл€ записи в строку*/
     size_t a;
+    if (bins.size()>0)
+    {
     size_t min = find_min(bins);
     size_t max = find_max(bins);
     if (bin == min)
@@ -75,6 +77,11 @@ string color_bins(const vector<size_t>& bins, size_t max_count, size_t bin) /*фу
     else
     {
         a =10 - (bin * 9) / max_count; /*используем дл€ расчета цвета i-го столбца bins[i]*/
+    }
+    }
+    else
+    {
+        a=0;
     }
     tipe << a; /*содержимое строки a */
     string colors = tipe.str(); /*содержимое а записываетс€ в строку colors*/
