@@ -1,0 +1,76 @@
+# depslib dependency file v1.0
+1590767971 source:c:\users\user\desktop\lab03\project\histogramm.cpp
+	"histogramm.h"
+
+1590767971 c:\users\user\desktop\lab03\project\histogramm.h
+	<vector>
+
+1590766210 source:c:\users\user\desktop\lab03\project\main.cpp
+	<iostream>
+	<vector>
+	<cmath>
+	<string>
+	<sstream>
+	<curl/curl.h>
+	"histogramm.h"
+	"svg.h"
+	<windows.h>
+
+1588284256 c:\users\user\desktop\lab03\project\svg.h
+	<vector>
+	<string>
+
+1590767971 source:c:\users\user\desktop\lab03\project\svg.cpp
+	<iostream>
+	<vector>
+	<cmath>
+	<string>
+	<sstream>
+	"svg.h"
+
+1588183734 source:c:\users\user\desktop\lab03\lab03-test\test.cpp
+	"histogramm.h"
+	<cassert>
+
+1588065417 c:\users\user\desktop\lab03\lab03-test\histogramm.h
+	<vector>
+
+1587991348 c:\users\user\desktop\lab03\curl\include\curl\curl.h
+	"curlver.h"
+	"system.h"
+	<stdio.h>
+	<limits.h>
+	<osreldate.h>
+	<sys/types.h>
+	<time.h>
+	<winsock2.h>
+	<ws2tcpip.h>
+	<sys/select.h>
+	<sys/socket.h>
+	<sys/time.h>
+	<support/SupportDefs.h>
+	"easy.h"
+	"multi.h"
+	"urlapi.h"
+	"typecheck-gcc.h"
+
+1588129392 c:\users\user\desktop\lab03\curl\include\curl\curlver.h
+
+1587548874 c:\users\user\desktop\lab03\curl\include\curl\system.h
+	<winsock2.h>
+	<windows.h>
+	<ws2tcpip.h>
+	<sys/types.h>
+	<sys/socket.h>
+	<sys/poll.h>
+
+1587548874 c:\users\user\desktop\lab03\curl\include\curl\easy.h
+
+1587548874 c:\users\user\desktop\lab03\curl\include\curl\multi.h
+	"curl.h"
+
+1587548874 c:\users\user\desktop\lab03\curl\include\curl\urlapi.h
+	"curl.h"
+
+1587548874 c:\users\user\desktop\lab03\curl\include\curl\typecheck-gcc.h
+

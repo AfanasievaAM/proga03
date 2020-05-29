@@ -170,7 +170,7 @@ main(int argc, char* argv[])
             break;
         }
     }
-    if (((strcmp(format, "text")!=0)&&(strcmp(format, "svg")!=0)) ||(poz==argc)) /*Если после format нет txt или svg, то подсказка*/
+    if (((strcmp(format, "text")!=0)&&(strcmp(format, "svg")!=0)) || (poz==argc)) /*Если после format нет txt или svg, то подсказка*/
     {
         cout << "Необходимо ввести 'format text' или 'format svg'";
         exit(1);
