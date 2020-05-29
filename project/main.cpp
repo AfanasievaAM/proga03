@@ -90,16 +90,11 @@ void show_histogram_text(vector <size_t>& bins)
 
 int main()
 {
-
     size_t number_count;
     cerr << "Enter number count:";
     cin >> number_count;
     const auto numbers = input_numbers(number_count);
-const char* name = "Commander Shepard";
-    int year = 2154;
-    printf("%s was born in %d.\n", name, year);
-    printf("n = %08x\n", 0x1234567);
-    return 0;
+
     size_t bin_count;
     cerr << "Enter bin count:";
     cin >> bin_count;
