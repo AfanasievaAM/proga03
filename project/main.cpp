@@ -2,9 +2,11 @@
 #include <vector>
 #include <cmath>
 #include <string>
+#include<sstream>
+#include<curl/curl.h>
 #include "histogramm.h"
 #include "svg.h"
-
+#include <windows.h>
 using namespace std;
 const size_t SCREEN_WIDTH = 80;
 const size_t MAX_ASTERISK = SCREEN_WIDTH - 3 - 1;
@@ -35,6 +37,7 @@ void make_histogram(const vector<double>& numbers, double max, double min, size_
 }
 void show_histogram_text(vector <size_t>& bins)
 {
+
     size_t max_bin = bins[0];
     for (size_t bin:bins)
     {
@@ -90,7 +93,29 @@ void show_histogram_text(vector <size_t>& bins)
 
 int main()
 {
-    size_t number_count;
+   printf("Decimal version %u\n", GetVersion()); // десятиричная система
+    printf("Hexadecimal version %x\n", GetVersion());// шестнадцатиричная система
+    DWORD info = GetVersion();
+    DWORD mask = 0x0000ffff;
+    DWORD version = info & mask; //побитовое и или логичесоке умножение
+    printf("version %u.\n", version);
+
+    DWORD platform = info >> 16;
+    DWORD mask_minor = 0x000000ff;
+    DWORD mask_major = 0x0000ff00;
+    DWORD version_minor = info & mask_minor;
+    printf("version minor %u.\n", version_minor);
+
+    DWORD version_major1 = info & mask_major;
+    DWORD version_major = version_major1>>8;
+    printf("version major %u.\n",version_major);
+
+    if ((info & 0b10000000'00000000'0000000'00000000) == 0) {
+    DWORD build = platform;
+    printf("build %u.\n",build);
+}
+
+    /*size_t number_count;
     cerr << "Enter number count:";
     cin >> number_count;
     const auto numbers = input_numbers(number_count);
@@ -106,6 +131,6 @@ int main()
     find_minmax(numbers, min, max);
     make_histogram ( numbers, max, min, bin_count, bins );
     show_histogram_svg(bins);
-
+*/
     return 0;
 }
