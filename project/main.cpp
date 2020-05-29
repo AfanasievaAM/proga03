@@ -26,7 +26,7 @@ input_numbers(istream& in, size_t count)
 Input
 read_input(istream& in, bool prompt )
 {
-    Input Input;
+    Input data;
     size_t number_count;
 
     if (prompt)
@@ -35,18 +35,18 @@ read_input(istream& in, bool prompt )
         in >> number_count;
 
         cerr << "Enter numbers: ";
-        Input.numbers = input_numbers(in, number_count);
+        data.numbers = input_numbers(in, number_count);
 
         cerr << "Enter bin count: ";
-        in >> Input.bin_count;
+        in >> data.bin_count;
     }
     else
     {
         in >> number_count;
-        Input.numbers = input_numbers(in, number_count);
-        in >> Input.bin_count;
+        data.numbers = input_numbers(in, number_count);
+        in >> data.bin_count;
     }
-    return Input;
+    return data;
 }
 
 size_t
@@ -97,21 +97,109 @@ vector<size_t> make_histogram(const Input& data)
     return result;
 }
 
-
+void show_histogram_text(vector <size_t> bins)
+{
+    size_t max_bin = bins[0];
+    for (size_t bin:bins)
+    {
+        if (bin > max_bin)
+        {
+            max_bin=bin;
+        }
+    }
+    if (max_bin > MAX_ASTERISK)
+    {
+        double factor = MAX_ASTERISK/static_cast<double>(max_bin);
+        for (size_t bin:bins)
+        {
+            if (bin <100)
+            {
+                cout <<" ";
+                if (bin < 10)
+                {
+                    cout <<" ";
+                }
+            }
+            cout <<bin <<"|";
+            size_t height = bin*factor;
+            for(int i=0; i<height; i++)
+            {
+                cout<< "*";
+            }
+            cout<<endl;
+        }
+    }
+    else
+    {
+        for (size_t bin:bins)
+        {
+            if (bin <100)
+            {
+                cout <<" ";
+                if (bin < 10)
+                {
+                    cout <<" ";
+                }
+            }
+            cout <<bin <<"|";
+            for (int i = 0; i < bin; i++)
+            {
+                cout << "*";
+            }
+            cout<<endl;
+        }
+    }
+}
 
 int
 main(int argc, char* argv[])
 {
     Input input;
+    char* format;
+    int poz;
+
+    for (int i=0; i< argc; i++)
+    {
+        if (strcmp(argv[i], "-format")==0)
+        {
+            if (i!=argc-1)
+            {
+                format = argv[i+1];
+            }
+            poz=i+1;
+            break;
+        }
+    }
+    if (((strcmp(format, "text")!=0)&&(strcmp(format, "svg")!=0)) ||(poz==argc)) /*Если после format нет txt или svg, то подсказка*/
+    {
+        cout << "Необходимо ввести 'format text' или 'format svg'";
+        exit(1);
+    }
     if (argc > 1)
+      {
+
+    if (poz==2)
+
+    {
+        input = download(argv[3]);
+    }
+    else
     {
         input = download(argv[1]);
     }
+}
     else
     {
         input = read_input(cin, true);
     }
     const auto bins = make_histogram(input);
+    if (strcmp(format,"text")==0)
+    {
+    show_histogram_text(bins);
+    }
+    else
+    {
     show_histogram_svg(bins);
+    }
     return 0;
 }
