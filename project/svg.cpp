@@ -4,8 +4,36 @@
 #include <string>
 #include <sstream> /*библиотека, отвечающая за ввод и вывод строк*/
 #include "svg.h"
+#include <windows.h>
 
 using namespace std;
+
+string print_name ()
+{
+stringstream buffer;
+    DWORD info = GetVersion();
+    DWORD mask = 0x0000ffff;
+    DWORD version = info & mask;
+
+    DWORD platform = info >> 16;
+    DWORD mask_minor = 0x000000ff;
+    DWORD mask_major = 0x0000ff00;
+    DWORD version_minor = info & mask_minor;
+
+    DWORD version_major1 = info & mask_major;
+    DWORD version_major = version_major1>>8;
+
+    if ((info & 0b10000000'00000000'0000000'00000000) == 0)
+        {
+    DWORD build = platform;
+    buffer << "Windows v" << version_minor << "." << version_major << " (build" << build << ")\n";
+}
+char system [MAX_COMPUTERNAME_LENGTH + 1];
+DWORD Size =sizeof (system);
+ GetComputerNameA(system, &Size);
+  buffer << "Name of computer"<<system<<"\n";
+ return buffer.str();
+}
 
 void svg_begin(double width, double height)
 {
@@ -84,7 +112,7 @@ string color_bins(const vector<size_t>& bins, size_t max_count, size_t bin) /*фу
 
 void show_histogram_svg(const vector<size_t>& bins)
 {
-    const auto IMAGE_WIDTH = 400;
+    const auto IMAGE_WIDTH = 500;
     const auto IMAGE_HEIGHT = 300;
     const auto TEXT_LEFT = 20;
     const auto TEXT_BASELINE = 20;
@@ -118,5 +146,6 @@ void show_histogram_svg(const vector<size_t>& bins)
         svg_rect(TEXT_WIDTH, top, bin_width, BIN_HEIGHT , "green", "#" + colors);
         top += BIN_HEIGHT;
     }
+    cout << "<text x='" << TEXT_LEFT << "' y='" << BIN_HEIGHT+top << "'>" << print_name() <<"</text>";
     svg_end();
 }

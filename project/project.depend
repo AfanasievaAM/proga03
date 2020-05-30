@@ -5,16 +5,15 @@
 1590767971 c:\users\user\desktop\lab03\project\histogramm.h
 	<vector>
 
-1590766210 source:c:\users\user\desktop\lab03\project\main.cpp
+1590768251 source:c:\users\user\desktop\lab03\project\main.cpp
 	<iostream>
 	<vector>
 	<cmath>
-	<string>
 	<sstream>
-	<curl/curl.h>
+	<string>
 	"histogramm.h"
 	"svg.h"
-	<windows.h>
+	<curl/curl.h>
 
 1588284256 c:\users\user\desktop\lab03\project\svg.h
 	<vector>
