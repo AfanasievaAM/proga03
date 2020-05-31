@@ -170,9 +170,10 @@ main(int argc, char* argv[])
             break;
         }
     }
+
     if (((strcmp(format, "text")!=0)&&(strcmp(format, "svg")!=0)) || (poz==argc)) /*Если после format нет txt или svg, то подсказка*/
     {
-        cout << "Необходимо ввести 'format text' или 'format svg'";
+        cerr << "You need to write '-format text' or '-format svg', please write the string completely";
         exit(1);
     }
     if (argc > 1)

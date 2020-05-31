@@ -8,6 +8,7 @@
 
 using namespace std;
 
+
 string print_name ()
 {
 stringstream buffer;
@@ -31,7 +32,7 @@ stringstream buffer;
 char system [MAX_COMPUTERNAME_LENGTH + 1];
 DWORD Size =sizeof (system);
  GetComputerNameA(system, &Size);
-  buffer << "Name of computer"<<system<<"\n";
+  buffer << "Name of computer: "<<system<<"\n";
  return buffer.str();
 }
 
